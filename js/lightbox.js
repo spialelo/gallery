@@ -1,3 +1,5 @@
+ /* Version 1.4.0 */
+
  (function() {
 
      var imgContainer = document.querySelector('.img-container');
@@ -12,7 +14,7 @@
 
      /* Prepopulating the search query. */
      window.addEventListener('load', function() {
-         console.log('All assets are loaded');
+
          var requestData = new XMLHttpRequest();
 
          requestData.onreadystatechange = function() {
@@ -26,27 +28,7 @@
 
                      console.log('starting stream...');
 
-                     var count = 0;
-                     var max = 10;
-                     //console.log(data);
-                     var loadImages = window.setInterval(function() {
-
-                         if (count !== max) {
-                             inputArea.style.display = 'none';
-                             loadMessage.classList.add('open');
-                             dataPhotos.forEach(displayPhotos);
-                             count++;
-
-                         } else {
-                             clearInterval(loadImages);
-                             inputArea.style.display = 'block';
-                             loadMessage.classList.remove('open');
-                             document.querySelector('.input-field').value = '';
-                             showCasePhotos();
-
-                         }
-                     }, 2000);
-
+                     dataPhotos.forEach(displayPhotos);
 
                  } else if (requestData.status == 0) {
                      console.log('The Flickr API returned error code #0: Sorry, the Flickr API service is not currently available.');
@@ -58,19 +40,38 @@
 
          };
 
-         requestData.open(
-             "GET",
-             "https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=1d34d38ac77079c5daa12628d132bee3&tags=pumpkin+pie&format=json&privacy_filter=1&safe_search=2&content_type=1&extras=description&per_page=10&nojsoncallback=1",
-             true
-         );
 
          requestData.onerror = function() {
-             // There was a connection error of some sort
+             /* There was a connection error of some sort. */
              console.log('big error: ' + requestData.status);
          };
 
 
-         requestData.send();
+         var countTimeout = 0;
+
+
+         (function xmlHTTPRequestTimeout() {
+             if (countTimeout < 5) {
+                 inputArea.style.display = 'none';
+                 loadMessage.classList.add('open');
+                 setTimeout(
+                     function() {
+                         requestData.open(
+                             "GET",
+                             "https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=1d34d38ac77079c5daa12628d132bee3&tags=pumpkin+pie&format=json&privacy_filter=1&safe_search=2&content_type=1&extras=description&nojsoncallback=1",
+                             true
+                         );
+                         requestData.send();
+                         console.log(countTimeout);
+                         countTimeout++;
+                         xmlHTTPRequestTimeout();
+                     }, 2000);
+             } else {
+                 resetFields();
+                 clearTimeout(xmlHTTPRequestTimeout);
+
+             }
+         })();
 
      });
 
@@ -83,6 +84,13 @@
              }
          }
 
+     }
+
+
+     function resetFields() {
+         inputArea.style.display = 'block';
+         loadMessage.classList.remove('open');
+         document.querySelector('.input-field').value = '';
      }
 
 
@@ -105,6 +113,7 @@
          retrievedImg.setAttribute("alt", retrievedTitle);
          listItem.appendChild(retrievedImg);
          imgContainer.appendChild(listItem);
+         showCasePhotos();
      }
 
 
@@ -115,6 +124,7 @@
              document.querySelector('.active').classList.remove('active');
          }
      }
+
 
      /* Want to make caption init cap. */
      String.prototype.initCap = function() {
@@ -131,9 +141,7 @@
          var currentImageTitle;
          var indexImage;
 
-
          if (thumbnailImgs.length > 0) {
-
              /* Because IE had to be IE. Called forEach this way instead of on the NodeList. */
              Array.prototype.forEach.call(thumbnailImgs, function(thumbnailItem) {
                  thumbnailItem.addEventListener('click', function() {
@@ -232,16 +240,13 @@
                      default:
                          break;
                  }
-
              }
-
          };
-
 
      }
 
 
-
+     /* When user creates there own search query to Flickr. */
      function createSearchResults() {
 
          checkIfRan();
@@ -249,7 +254,7 @@
          var inputReceived = document.querySelector('.input-field').value;
          var finalQuery = inputReceived.replace(/ /g, '+');
          var pageNum = 1;
-         var urlToGet = "https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=1d34d38ac77079c5daa12628d132bee3&tags=" + finalQuery + "&format=json&privacy_filter=1&safe_search=2&content_type=1&extras=description&per_page=10&nojsoncallback=1";
+         var urlToGet = "https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=1d34d38ac77079c5daa12628d132bee3&tags=" + finalQuery + "&format=json&privacy_filter=1&safe_search=2&content_type=1&extras=description&nojsoncallback=1";
 
          inputArea.style.display = 'none';
          loadMessage.classList.add('open');
@@ -270,23 +275,9 @@
                      var count = 0;
                      var max = 10;
                      //console.log(data);
-                     var loadImages = window.setInterval(function() {
 
-                         if (count !== max) {
-                             dataPhotos.forEach(displayPhotos);
-                             count++;
 
-                         } else {
-                             clearInterval(loadImages);
-                             inputArea.style.display = 'block';
-                             loadMessage.classList.remove('open');
-                             /* Reset input field to empty, after submitting form. */
-                             document.querySelector('.input-field').value = '';
-                             showCasePhotos();
-
-                         }
-                     }, 2000);
-
+                     dataPhotos.forEach(displayPhotos);
 
                  } else if (requestData.status == 0) {
                      console.log('The Flickr API returned error code #0: Sorry, the Flickr API service is not currently available.');
@@ -298,24 +289,38 @@
 
          };
 
-         requestData.open(
-             "GET",
-             urlToGet,
-             true
-         );
-
          requestData.onerror = function() {
              // There was a connection error of some sort
              console.log('big error: ' + requestData.status);
          };
 
 
-         requestData.send();
+         var countTimeout = 0;
+
+
+         (function xmlHTTPRequestTimeout() {
+             if (countTimeout < 5) {
+                 inputArea.style.display = 'none';
+                 loadMessage.classList.add('open');
+                 setTimeout(
+                     function() {
+                         requestData.open(
+                             "GET",
+                             urlToGet,
+                             true
+                         );
+                         requestData.send();
+                         console.log(countTimeout);
+                         countTimeout++;
+                         xmlHTTPRequestTimeout();
+                     }, 2000);
+             } else {
+                 resetFields();
+                 clearTimeout(xmlHTTPRequestTimeout);
+
+             }
+         })();
 
      }
-
-
-
-
 
  })();
