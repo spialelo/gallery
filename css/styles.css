@@ -153,7 +153,7 @@
       }
       .lightbox-modal {
           width: 320px;
-          left: 7%;
+          left: 10%;
       }
       .close-modal {
           left: 320px;
@@ -181,7 +181,7 @@
           left: 20%;
       }
       .close-modal {
-          width: 350px;
+          left: 350px;
       }
   }
   /* Small Devices, Tablets */
@@ -205,7 +205,7 @@
           left: 30%;
       }
       .close-modal {
-          width: 390px;
+          left: 390px;
       }
   }
   /* Medium Devices, Desktops */
