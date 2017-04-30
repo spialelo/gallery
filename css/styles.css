@@ -1,0 +1,141 @@
+  body {
+      padding: 10px;
+  }
+  
+  #outer-container {
+      margin: 0 auto;
+      min-height: 150px;
+      width: 890px;
+      background-color: #cdcdcd;
+      padding: 5px;
+      position: relative;
+      overflow: hidden;
+      border-radius: 25px;
+  }
+  
+  div.inner-container {
+      float: left;
+      min-height: 100px;
+      width: 94.5%;
+      padding: 20px;
+      margin: 5px;
+      background-color: #444;
+      border-radius: 20px;
+  }
+  
+  .input-area {
+      display: block;
+      margin: 0 auto;
+      width: 300px;
+  }
+  
+  .load-message {
+      display: none;
+      width: 135px;
+      margin: 0 auto;
+      position: absolute;
+      left: 45%;
+  }
+  
+  .load-message img {
+      width: 100%;
+  }
+  
+  ul.img-container {
+      list-style: none;
+  }
+  
+  ul.img-container li {
+      float: left;
+      width: 250px;
+      height: 150px;
+      overflow: hidden;
+      margin: 5px;
+  }
+  
+  ul.img-container li:hover {
+      outline: inset 2px #fff;
+      background-color: #000;
+      opacity: 0.6;
+  }
+  
+  ul.img-container li img {
+      width: 100%;
+  }
+  
+  .lightbox-modal {
+      display: none;
+      float: left;
+      width: 380px;
+      /*height: 200px;*/
+      left: 33%;
+      top: 12%;
+      background-color: #999;
+      border-radius: 10px;
+      position: fixed;
+      padding: 15px;
+      z-index: 10;
+  }
+  
+  div.lightbox-modal .slidePrev,
+  div.lightbox-modal .slideNext {
+      padding: 15px 10px;
+      background-color: #000;
+      display: inline;
+      position: absolute;
+      cursor: pointer;
+      opacity: 0.8;
+      color: #fff;
+  }
+  
+  div.lightbox-modal .slidePrev:hover,
+  div.lightbox-modal .slideNext:hover {
+      opacity: 0.8;
+      background-color: #fff;
+      color: #000;
+  }
+  
+  div.lightbox-modal .slidePrev {
+      /*float: left;
+            position: relative;*/
+      left: 0px;
+      top: 110px;
+  }
+  
+  div.lightbox-modal .slideNext {
+      float: right;
+      /*position: relative;*/
+      right: 0px;
+      top: 110px;
+  }
+  
+  div.lightbox-modal img {
+      width: 100%;
+      height: auto;
+  }
+  
+  .close-modal {
+      top: -15px;
+      left: 420px;
+      padding: 2px 5px 7px 4px;
+      position: absolute;
+      color: #fff;
+      font-size: 36px;
+      font-weight: bold;
+      cursor: pointer;
+      text-shadow: 2px 2px 2px #999;
+  }
+  
+  .activeImg {
+      margin-bottom: 25px;
+  }
+  
+  .activeImg-title {
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 12px;
+      line-height: 14px;
+  }
+  
+  .open {
+      display: block;
+  }
