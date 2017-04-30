@@ -5,7 +5,7 @@
   #outer-container {
       margin: 0 auto;
       min-height: 150px;
-      width: 890px;
+      /*width: 890px;*/
       background-color: #cdcdcd;
       padding: 5px;
       position: relative;
@@ -48,7 +48,7 @@
   ul.img-container li {
       float: left;
       width: 250px;
-      height: 150px;
+      height: 140px;
       overflow: hidden;
       margin: 5px;
   }
@@ -139,3 +139,89 @@
   .open {
       display: block;
   }
+  /* Custom, iPhone Retina */
+  
+  @media only screen and (min-width: 320px) {
+      #outer-container {
+          width: 400px;
+      }
+      div.inner-container {
+          width: 87%;
+      }
+      ul.img-container {
+          padding: 0 45px;
+      }
+      .lightbox-modal {
+          width: 320px;
+          left: 7%;
+      }
+      .close-modal {
+          left: 320px;
+          top: -36px;
+      }
+  }
+  /* Extra Small Devices, Phones */
+  
+  @media only screen and (min-width: 480px) {
+      #outer-container {
+          width: 400px;
+      }
+      div.inner-container {
+          width: 87.5%;
+      }
+      ul.img-container {
+          padding: 0 45px;
+      }
+      ul.img-container li {
+          width: 250px;
+          height: 108px;
+      }
+      .lightbox-modal {
+          width: 320px;
+          left: 20%;
+      }
+      .close-modal {
+          width: 350px;
+      }
+  }
+  /* Small Devices, Tablets */
+  
+  @media only screen and (min-width: 768px) {
+      #outer-container {
+          width: 700px;
+      }
+      div.inner-container {
+          width: 92.75%;
+      }
+      ul.img-container {
+          padding: 0 65px;
+      }
+      ul.img-container li {
+          width: 163px;
+          height: 90px;
+      }
+      .lightbox-modal {
+          width: 360px;
+          left: 30%;
+      }
+      .close-modal {
+          width: 390px;
+      }
+  }
+  /* Medium Devices, Desktops */
+  
+  @media only screen and (min-width: 950px) {
+      #outer-container {
+          width: 890px;
+      }
+      div.inner-container {
+          width: 94.5%;
+      }
+      ul.img-container li {
+          width: 226px;
+          height: 126px;
+      }
+  }
+  /* Large Devices, Wide Screens */
+  
+  @media only screen and (min-width: 1200px) {}
