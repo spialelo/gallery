@@ -26,7 +26,7 @@
                      var data = JSON.parse(requestData.responseText);
                      var dataPhotos = data.photos.photo;
 
-                     console.log('starting stream...');
+                     //console.log('starting request...');
 
                      dataPhotos.forEach(displayPhotos);
 
@@ -62,7 +62,6 @@
                              true
                          );
                          requestData.send();
-                         console.log(countTimeout);
                          countTimeout++;
                          xmlHTTPRequestTimeout();
                      }, 2000);
@@ -310,7 +309,6 @@
                              true
                          );
                          requestData.send();
-                         console.log(countTimeout);
                          countTimeout++;
                          xmlHTTPRequestTimeout();
                      }, 2000);

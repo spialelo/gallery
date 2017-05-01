@@ -70,11 +70,12 @@
       /*height: 200px;*/
       left: 33%;
       top: 12%;
-      background-color: #999;
+      background-color: #fff;
       border-radius: 10px;
       position: fixed;
       padding: 15px;
       z-index: 10;
+      border: 11px solid #999;
   }
   
   div.lightbox-modal .slidePrev,
