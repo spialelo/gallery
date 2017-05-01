@@ -52,8 +52,7 @@
 
          (function xmlHTTPRequestTimeout() {
              if (countTimeout < 5) {
-                 inputArea.style.display = 'none';
-                 loadMessage.classList.add('open');
+                 loadingFields();
                  setTimeout(
                      function() {
                          requestData.open(
@@ -83,6 +82,11 @@
              }
          }
 
+     }
+
+     function loadingFields() {
+         inputArea.style.display = 'none';
+         loadMessage.classList.add('open');
      }
 
 
@@ -255,9 +259,6 @@
          var pageNum = 1;
          var urlToGet = "https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=1d34d38ac77079c5daa12628d132bee3&tags=" + finalQuery + "&format=json&privacy_filter=1&safe_search=2&content_type=1&extras=description&nojsoncallback=1";
 
-         inputArea.style.display = 'none';
-         loadMessage.classList.add('open');
-
          var requestData = new XMLHttpRequest();
 
          requestData.onreadystatechange = function() {
@@ -299,8 +300,7 @@
 
          (function xmlHTTPRequestTimeout() {
              if (countTimeout < 5) {
-                 inputArea.style.display = 'none';
-                 loadMessage.classList.add('open');
+                 loadingFields();
                  setTimeout(
                      function() {
                          requestData.open(
