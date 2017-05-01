@@ -154,7 +154,7 @@
       }
       .lightbox-modal {
           width: 320px;
-          left: 10%;
+          left: 8%;
       }
       .close-modal {
           left: 320px;
@@ -179,7 +179,7 @@
       }
       .lightbox-modal {
           width: 320px;
-          left: 20%;
+          left: 18%;
       }
       .close-modal {
           left: 350px;
@@ -203,7 +203,7 @@
       }
       .lightbox-modal {
           width: 360px;
-          left: 30%;
+          left: 25%;
       }
       .close-modal {
           left: 390px;
@@ -222,7 +222,28 @@
           width: 226px;
           height: 126px;
       }
+      .lightbox-modal {
+          width: 360px;
+          left: 30%;
+      }
   }
   /* Large Devices, Wide Screens */
   
-  @media only screen and (min-width: 1200px) {}
+  @media only screen and (min-width: 1200px) {
+
+  #outer-container {
+          width: 890px;
+      }
+      div.inner-container {
+          width: 94.5%;
+      }
+      ul.img-container li {
+          width: 226px;
+          height: 126px;
+      }
+      .lightbox-modal {
+          width: 360px;
+          left: 40%;
+      }
+    
+  }
